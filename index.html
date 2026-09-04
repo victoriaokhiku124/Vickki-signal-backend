@@ -8,51 +8,50 @@
 <style>
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background: #0b1020;
+  background: #080c18;
   color: white;
-  min-height: 100vh;
 }
 
 .header {
-  padding: 20px;
+  padding: 22px 18px;
   text-align: center;
-  background: #111936;
-  border-bottom: 1px solid #27345f;
+  background: #10172d;
+  border-bottom: 1px solid #293657;
 }
 
 .header h1 {
-  font-size: 25px;
+  margin: 0;
+  font-size: 27px;
 }
 
 .header p {
-  color: #9da9d0;
-  margin-top: 6px;
+  margin: 7px 0 0;
+  color: #9ca9ca;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 650px;
   margin: auto;
-  padding: 20px;
+  padding: 18px;
 }
 
 .card {
-  background: #111936;
-  border: 1px solid #27345f;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 18px;
+  background: #10172d;
+  border: 1px solid #293657;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
-  color: #b9c4e8;
+  margin: 10px 0 7px;
+  color: #aeb9d7;
   font-size: 14px;
 }
 
@@ -60,84 +59,122 @@ select,
 button {
   width: 100%;
   padding: 14px;
-  border-radius: 10px;
-  border: none;
+  border-radius: 11px;
   font-size: 16px;
 }
 
 select {
-  background: #080d1c;
+  background: #080c18;
   color: white;
-  border: 1px solid #33416e;
-  margin-bottom: 15px;
+  border: 1px solid #344367;
 }
 
 button {
-  background: #4f7cff;
+  margin-top: 15px;
+  border: 0;
+  background: #4d7cff;
   color: white;
   font-weight: bold;
-  cursor: pointer;
 }
 
-button:hover {
-  opacity: 0.9;
+button:active {
+  transform: scale(.98);
+}
+
+.signal-card {
+  text-align: center;
+}
+
+.signal-label {
+  color: #8e9bbd;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 .signal {
-  text-align: center;
-  padding: 25px 10px;
-}
-
-.signal-title {
-  color: #9da9d0;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.signal-result {
-  font-size: 38px;
+  font-size: 48px;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 .buy {
-  color: #35d07f;
+  color: #32d583;
 }
 
 .sell {
-  color: #ff5d6c;
+  color: #ff5c6c;
 }
 
 .wait {
   color: #ffc857;
 }
 
-.info {
+.details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
-.info-box {
-  background: #080d1c;
-  border-radius: 10px;
-  padding: 14px;
-  text-align: center;
+.box {
+  background: #080c18;
+  border-radius: 12px;
+  padding: 13px;
 }
 
-.info-box small {
+.box small {
   display: block;
-  color: #8e9ac0;
-  margin-bottom: 5px;
+  color: #8996b7;
+  margin-bottom: 6px;
+}
+
+.history-title {
+  margin-bottom: 12px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #080c18;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.history-buy {
+  color: #32d583;
+  font-weight: bold;
+}
+
+.history-sell {
+  color: #ff5c6c;
+  font-weight: bold;
+}
+
+.history-wait {
+  color: #ffc857;
+  font-weight: bold;
+}
+
+.empty {
+  color: #8490ad;
+  text-align: center;
+  padding: 15px;
 }
 
 .disclaimer {
+  color: #7f8ba9;
   font-size: 12px;
   line-height: 1.5;
-  color: #8995b8;
   text-align: center;
-  margin-top: 15px;
+}
+
+.status {
+  text-align: center;
+  color: #65a2ff;
+  font-size: 13px;
+  margin-top: 10px;
 }
 </style>
 </head>
@@ -146,14 +183,14 @@ button:hover {
 
 <div class="header">
   <h1>Vickki Signal PRO</h1>
-  <p>Trading Signal Assistant</p>
+  <p>Smart Trading Signal Dashboard</p>
 </div>
 
 <div class="container">
 
   <div class="card">
 
-    <label for="asset">Select Asset</label>
+    <label>Asset</label>
 
     <select id="asset">
       <option>EUR/USD</option>
@@ -165,7 +202,7 @@ button:hover {
       <option>BTC/USD</option>
     </select>
 
-    <label for="timeframe">Select Timeframe</label>
+    <label>Timeframe</label>
 
     <select id="timeframe">
       <option>1 Minute</option>
@@ -175,42 +212,50 @@ button:hover {
       <option>1 Hour</option>
     </select>
 
-    <button onclick="generateSignal()">GENERATE SIGNAL</button>
+    <button onclick="generateSignal()">
+      GENERATE SIGNAL
+    </button>
+
+    <div class="status" id="status">
+      System ready
+    </div>
 
   </div>
 
-  <div class="card signal">
+  <div class="card signal-card">
 
-    <div class="signal-title">CURRENT SIGNAL</div>
+    <div class="signal-label">
+      CURRENT SIGNAL
+    </div>
 
-    <div id="signal" class="signal-result wait">
+    <div id="signal" class="signal wait">
       WAIT
     </div>
 
-    <p id="message">
-      Select an asset and timeframe, then generate a signal.
-    </p>
+    <div id="message">
+      Generate a signal to begin.
+    </div>
 
-    <div class="info">
+    <div class="details">
 
-      <div class="info-box">
+      <div class="box">
         <small>Asset</small>
-        <span id="selectedAsset">---</span>
+        <span id="currentAsset">---</span>
       </div>
 
-      <div class="info-box">
+      <div class="box">
         <small>Timeframe</small>
-        <span id="selectedTimeframe">---</span>
+        <span id="currentTimeframe">---</span>
       </div>
 
-      <div class="info-box">
+      <div class="box">
         <small>Confidence</small>
         <span id="confidence">---</span>
       </div>
 
-      <div class="info-box">
-        <small>Status</small>
-        <span id="status">Ready</span>
+      <div class="box">
+        <small>Countdown</small>
+        <span id="countdown">---</span>
       </div>
 
     </div>
@@ -218,84 +263,218 @@ button:hover {
   </div>
 
   <div class="card">
-    <h3>How it works</h3>
-    <br>
-    <p>
-      Choose an asset and timeframe, then generate a signal.
-      The result is a simulated educational signal and does not
-      guarantee a profitable trade.
-    </p>
+
+    <h3 class="history-title">
+      Signal History
+    </h3>
+
+    <div id="history">
+      <div class="empty">
+        No signals generated yet.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card">
 
     <div class="disclaimer">
-      ⚠️ Educational tool only. Trading involves substantial risk.
-      Never risk money you cannot afford to lose.
+      ⚠️ Educational tool only. Signals generated by this demo
+      are simulated and are not guaranteed to predict market
+      movements or produce profits. Always perform your own
+      analysis and manage your risk carefully.
     </div>
+
   </div>
 
 </div>
 
 <script>
 
+let countdownTimer = null;
+
 function generateSignal() {
 
-  const asset = document.getElementById("asset").value;
-  const timeframe = document.getElementById("timeframe").value;
+  const asset =
+    document.getElementById("asset").value;
 
-  const signal = document.getElementById("signal");
-  const message = document.getElementById("message");
+  const timeframe =
+    document.getElementById("timeframe").value;
 
-  const selectedAsset =
-    document.getElementById("selectedAsset");
+  const signalElement =
+    document.getElementById("signal");
 
-  const selectedTimeframe =
-    document.getElementById("selectedTimeframe");
+  const message =
+    document.getElementById("message");
 
   const confidence =
     document.getElementById("confidence");
 
+  const currentAsset =
+    document.getElementById("currentAsset");
+
+  const currentTimeframe =
+    document.getElementById("currentTimeframe");
+
+  const countdown =
+    document.getElementById("countdown");
+
   const status =
     document.getElementById("status");
 
-  selectedAsset.textContent = asset;
-  selectedTimeframe.textContent = timeframe;
+  currentAsset.textContent = asset;
+  currentTimeframe.textContent = timeframe;
 
   const random = Math.random();
 
-  signal.className = "signal-result";
+  let result;
 
   if (random < 0.33) {
 
-    signal.textContent = "BUY";
-    signal.classList.add("buy");
+    result = "BUY";
+
+    signalElement.className =
+      "signal buy";
 
     message.textContent =
-      "Potential upward movement detected. Confirm with your own analysis.";
-
-  } else if (random < 0.66) {
-
-    signal.textContent = "SELL";
-    signal.classList.add("sell");
-
-    message.textContent =
-      "Potential downward movement detected. Confirm with your own analysis.";
-
-  } else {
-
-    signal.textContent = "WAIT";
-    signal.classList.add("wait");
-
-    message.textContent =
-      "No clear direction. Waiting for stronger confirmation.";
+      "Potential bullish direction. Confirm with your own analysis.";
 
   }
 
+  else if (random < 0.66) {
+
+    result = "SELL";
+
+    signalElement.className =
+      "signal sell";
+
+    message.textContent =
+      "Potential bearish direction. Confirm with your own analysis.";
+
+  }
+
+  else {
+
+    result = "WAIT";
+
+    signalElement.className =
+      "signal wait";
+
+    message.textContent =
+      "No clear direction. Wait for stronger confirmation.";
+
+  }
+
+  signalElement.textContent = result;
+
   const confidenceValue =
-    Math.floor(Math.random() * 21) + 70;
+    Math.floor(Math.random() * 16) + 75;
 
   confidence.textContent =
     confidenceValue + "%";
 
-  status.textContent = "Signal Generated";
+  status.textContent =
+    "Signal generated";
+
+  startCountdown();
+
+  addHistory(
+    asset,
+    timeframe,
+    result,
+    confidenceValue
+  );
+}
+
+function startCountdown() {
+
+  clearInterval(countdownTimer);
+
+  let seconds = 60;
+
+  const countdown =
+    document.getElementById("countdown");
+
+  countdown.textContent =
+    seconds + "s";
+
+  countdownTimer = setInterval(function() {
+
+    seconds--;
+
+    countdown.textContent =
+      seconds + "s";
+
+    if (seconds <= 0) {
+
+      clearInterval(countdownTimer);
+
+      countdown.textContent =
+        "Expired";
+
+      document.getElementById("status").textContent =
+        "Signal expired";
+
+    }
+
+  }, 1000);
+}
+
+function addHistory(
+  asset,
+  timeframe,
+  signal,
+  confidence
+) {
+
+  const history =
+    document.getElementById("history");
+
+  const empty =
+    history.querySelector(".empty");
+
+  if (empty) {
+    empty.remove();
+  }
+
+  const item =
+    document.createElement("div");
+
+  item.className =
+    "history-item";
+
+  let signalClass =
+    "history-wait";
+
+  if (signal === "BUY") {
+    signalClass = "history-buy";
+  }
+
+  if (signal === "SELL") {
+    signalClass = "history-sell";
+  }
+
+  const time =
+    new Date().toLocaleTimeString();
+
+  item.innerHTML = `
+    <div>
+      <strong>${asset}</strong><br>
+      <small>${time} • ${timeframe}</small>
+    </div>
+
+    <div class="${signalClass}">
+      ${signal}
+      <br>
+      <small>${confidence}%</small>
+    </div>
+  `;
+
+  history.prepend(item);
+
+  if (history.children.length > 10) {
+    history.removeChild(history.lastChild);
+  }
 }
 
 </script>
