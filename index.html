@@ -2,276 +2,220 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VICKKI SIGNAL PRO 7.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VICKKI SIGNAL PRO 8.0</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#070b12;
-    color:#fff;
+margin:0;
+background:#070b12;
+color:#fff;
+font-family:Arial,sans-serif;
 }
 
 .app{
-    max-width:520px;
-    margin:auto;
-    padding:16px;
+max-width:520px;
+margin:auto;
+padding:16px;
 }
 
 .header{
-    text-align:center;
-    padding:15px 0 20px;
+text-align:center;
+padding:15px 0 20px;
 }
 
 .logo{
-    font-size:25px;
-    font-weight:800;
-    letter-spacing:1px;
+font-size:25px;
+font-weight:900;
+letter-spacing:1px;
 }
 
-.pro{
-    color:#00e5ff;
-}
+.pro{color:#00e5ff}
 
-.subtitle{
-    color:#8492a6;
-    font-size:12px;
-    margin-top:5px;
+.sub{
+font-size:11px;
+color:#7d8999;
+margin-top:5px;
 }
 
 .card{
-    background:#101722;
-    border:1px solid #1d2938;
-    border-radius:15px;
-    padding:15px;
-    margin-bottom:13px;
-    box-shadow:0 8px 25px rgba(0,0,0,.2);
+background:#101722;
+border:1px solid #1d2938;
+border-radius:16px;
+padding:16px;
+margin-bottom:14px;
 }
 
 label{
-    display:block;
-    color:#8f9bad;
-    font-size:12px;
-    margin-bottom:6px;
+display:block;
+font-size:12px;
+color:#8d99aa;
+margin-bottom:7px;
 }
 
 select{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #263445;
-    background:#0a1019;
-    color:white;
-    outline:none;
-    margin-bottom:12px;
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #293649;
+background:#080e17;
+color:#fff;
+margin-bottom:12px;
 }
 
-.chart-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:12px;
+.upload{
+border:2px dashed #294052;
+border-radius:14px;
+padding:25px 15px;
+text-align:center;
+cursor:pointer;
 }
 
-.chart-title strong{
-    font-size:14px;
+.upload-icon{
+font-size:35px;
+margin-bottom:8px;
 }
 
-.live{
-    color:#00e676;
-    font-size:11px;
+.upload-title{
+font-weight:bold;
+font-size:14px;
 }
 
-.chart{
-    height:220px;
-    position:relative;
-    overflow:hidden;
-    border-radius:12px;
-    background:
-      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:40px 40px;
-    border:1px solid #1d2938;
+.upload-text{
+font-size:11px;
+color:#7f8c9d;
+margin-top:6px;
 }
 
-.price-line{
-    position:absolute;
-    left:0;
-    right:0;
-    top:45%;
-    border-top:1px dashed rgba(0,229,255,.45);
+input[type=file]{
+display:none;
 }
 
-.candles{
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    padding:15px;
+.preview{
+display:none;
+margin-top:14px;
 }
 
-.candle{
-    width:7px;
-    position:relative;
-    border-radius:2px;
-}
-
-.candle:before{
-    content:"";
-    position:absolute;
-    left:3px;
-    width:1px;
-    height:100%;
-    background:currentColor;
-}
-
-.bull{
-    background:#00e676;
-    color:#00e676;
-}
-
-.bear{
-    background:#ff4d6d;
-    color:#ff4d6d;
-}
-
-.c1{height:70px}.c2{height:110px}.c3{height:55px}
-.c4{height:125px}.c5{height:85px}.c6{height:105px}
-.c7{height:145px}.c8{height:100px}.c9{height:135px}
-.c10{height:115px}.c11{height:150px}.c12{height:130px}
-
-.chart-price{
-    position:absolute;
-    right:8px;
-    top:41%;
-    background:#00e5ff;
-    color:#001014;
-    font-size:10px;
-    padding:3px 5px;
-    border-radius:4px;
-    font-weight:bold;
-}
-
-.signal{
-    text-align:center;
-    padding:20px 10px;
-}
-
-.signal-label{
-    color:#8492a6;
-    font-size:11px;
-    letter-spacing:1px;
-}
-
-.signal-value{
-    font-size:34px;
-    font-weight:900;
-    margin:8px 0;
-}
-
-.buy{color:#00e676}
-.sell{color:#ff4d6d}
-.wait{color:#ffc107}
-
-.score{
-    font-size:13px;
-    color:#aeb8c7;
-}
-
-.meter{
-    height:9px;
-    background:#202b39;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:12px;
-}
-
-.meter-fill{
-    height:100%;
-    width:70%;
-    background:#00e5ff;
-    border-radius:20px;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.stat{
-    background:#0a1019;
-    border:1px solid #1d2938;
-    border-radius:11px;
-    padding:12px;
-}
-
-.stat small{
-    display:block;
-    color:#7e8b9d;
-    font-size:10px;
-    margin-bottom:5px;
-}
-
-.stat strong{
-    font-size:14px;
-}
-
-.analysis{
-    line-height:1.6;
-    color:#c1cad6;
-    font-size:13px;
+.preview img{
+width:100%;
+max-height:360px;
+object-fit:contain;
+border-radius:12px;
+border:1px solid #263548;
+background:#05080d;
 }
 
 button{
-    width:100%;
-    border:0;
-    padding:14px;
-    border-radius:11px;
-    background:#00e5ff;
-    color:#001014;
-    font-weight:800;
-    cursor:pointer;
-    margin-top:12px;
+width:100%;
+padding:15px;
+margin-top:13px;
+border:0;
+border-radius:11px;
+background:#00e5ff;
+color:#001014;
+font-weight:900;
+font-size:14px;
 }
 
 button:active{
-    transform:scale(.98);
+transform:scale(.98);
+}
+
+.signal{
+text-align:center;
+padding:8px;
+}
+
+.signal-label{
+font-size:11px;
+color:#7e8a9a;
+letter-spacing:1px;
+}
+
+.signal-result{
+font-size:30px;
+font-weight:900;
+margin:10px 0;
+}
+
+.wait{color:#ffc107}
+.bull{color:#00e676}
+.bear{color:#ff4d6d}
+
+.confidence{
+font-size:13px;
+color:#aeb8c7;
+}
+
+.meter{
+height:9px;
+background:#202b39;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.fill{
+height:100%;
+width:0%;
+background:#00e5ff;
+transition:.5s;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:12px;
+}
+
+.stat{
+background:#080e17;
+border:1px solid #1c2938;
+padding:12px;
+border-radius:11px;
+}
+
+.stat small{
+display:block;
+font-size:10px;
+color:#718096;
+margin-bottom:5px;
+}
+
+.stat strong{
+font-size:13px;
+}
+
+.explain{
+font-size:13px;
+line-height:1.6;
+color:#bdc7d4;
+}
+
+.history{
+font-size:12px;
 }
 
 .history-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:11px 0;
-    border-bottom:1px solid #1d2938;
-    font-size:12px;
+display:flex;
+justify-content:space-between;
+padding:11px 0;
+border-bottom:1px solid #1d2938;
 }
 
 .history-item:last-child{
-    border-bottom:0;
-}
-
-.history-buy{color:#00e676;font-weight:bold}
-.history-sell{color:#ff4d6d;font-weight:bold}
-.history-wait{color:#ffc107;font-weight:bold}
-
-.countdown{
-    text-align:center;
-    font-size:12px;
-    color:#8492a6;
-    margin-top:8px;
+border-bottom:0;
 }
 
 .notice{
-    color:#718096;
-    font-size:10px;
-    line-height:1.5;
-    text-align:center;
-    padding:10px;
+text-align:center;
+font-size:10px;
+line-height:1.5;
+color:#697688;
+padding:5px;
 }
 </style>
 </head>
@@ -281,13 +225,18 @@ button:active{
 <div class="app">
 
 <div class="header">
-    <div class="logo">VICKKI SIGNAL <span class="pro">PRO 7.0</span></div>
-    <div class="subtitle">SMART CHART ANALYSIS DASHBOARD</div>
+<div class="logo">
+VICKKI SIGNAL <span class="pro">PRO 8.0</span>
+</div>
+<div class="sub">
+POCKET OPTION SCREENSHOT ANALYZER
+</div>
 </div>
 
 <div class="card">
 
-<label>Currency Pair</label>
+<label>CURRENCY PAIR</label>
+
 <select id="pair">
 <option>EUR/USD</option>
 <option>GBP/USD</option>
@@ -321,7 +270,8 @@ button:active{
 <option>NZD/CAD</option>
 </select>
 
-<label>Trade Duration</label>
+<label>TRADE DURATION</label>
+
 <select id="duration">
 <option>15 Seconds</option>
 <option>30 Seconds</option>
@@ -331,33 +281,36 @@ button:active{
 
 <div class="card">
 
-<div class="chart-title">
-<strong>MARKET CHART</strong>
-<span class="live">● ANALYSIS MODE</span>
+<label>POCKET OPTION CHART</label>
+
+<label class="upload" for="chartFile">
+
+<div class="upload-icon">📸</div>
+
+<div class="upload-title">
+UPLOAD CHART SCREENSHOT
 </div>
 
-<div class="chart">
-
-<div class="price-line"></div>
-
-<div class="candles">
-<div class="candle bull c1"></div>
-<div class="candle bear c2"></div>
-<div class="candle bull c3"></div>
-<div class="candle bull c4"></div>
-<div class="candle bear c5"></div>
-<div class="candle bull c6"></div>
-<div class="candle bull c7"></div>
-<div class="candle bear c8"></div>
-<div class="candle bull c9"></div>
-<div class="candle bull c10"></div>
-<div class="candle bull c11"></div>
-<div class="candle bull c12"></div>
+<div class="upload-text">
+Tap here and select your Pocket Option screenshot
 </div>
 
-<div class="chart-price">PRICE</div>
+</label>
 
+<input
+id="chartFile"
+type="file"
+accept="image/*"
+onchange="showPreview(event)"
+>
+
+<div class="preview" id="preview">
+<img id="previewImage">
 </div>
+
+<button onclick="analyzeScreenshot()">
+ANALYZE SCREENSHOT
+</button>
 
 </div>
 
@@ -365,22 +318,20 @@ button:active{
 
 <div class="signal">
 
-<div class="signal-label">CURRENT SETUP</div>
-
-<div id="signal" class="signal-value wait">
-WAIT
+<div class="signal-label">
+ANALYSIS RESULT
 </div>
 
-<div id="score" class="score">
-Score: 0 / 10
+<div id="signal" class="signal-result wait">
+WAITING
+</div>
+
+<div id="confidence" class="confidence">
+Upload a chart screenshot to begin.
 </div>
 
 <div class="meter">
-<div id="meter" class="meter-fill"></div>
-</div>
-
-<div id="countdown" class="countdown">
-Ready for analysis
+<div id="fill" class="fill"></div>
 </div>
 
 </div>
@@ -389,26 +340,26 @@ Ready for analysis
 
 <div class="card">
 
-<div class="stats">
+<div class="row">
 
 <div class="stat">
-<small>TREND</small>
-<strong id="trend">Waiting</strong>
+<small>PAIR</small>
+<strong id="resultPair">—</strong>
 </div>
 
 <div class="stat">
-<small>MOMENTUM</small>
-<strong id="momentum">Waiting</strong>
+<small>DURATION</small>
+<strong id="resultDuration">—</strong>
 </div>
 
 <div class="stat">
-<small>SUPPORT</small>
-<strong id="support">Waiting</strong>
+<small>ANALYSIS</small>
+<strong id="analysisType">IMAGE</strong>
 </div>
 
 <div class="stat">
-<small>RESISTANCE</small>
-<strong id="resistance">Waiting</strong>
+<small>STATUS</small>
+<strong id="status">WAITING</strong>
 </div>
 
 </div>
@@ -417,273 +368,155 @@ Ready for analysis
 
 <div class="card">
 
-<label>Quick Chart Analysis</label>
+<label>ANALYSIS MESSAGE</label>
 
-<select id="candle">
-<option value="">Recent candle direction</option>
-<option value="2">Strong bullish candle</option>
-<option value="1">Small bullish candle</option>
-<option value="-1">Small bearish candle</option>
-<option value="-2">Strong bearish candle</option>
-<option value="0">Doji / uncertain</option>
-</select>
-
-<select id="trendSelect">
-<option value="">Recent trend</option>
-<option value="2">Clear uptrend</option>
-<option value="1">Slight upward movement</option>
-<option value="-1">Slight downward movement</option>
-<option value="-2">Clear downtrend</option>
-<option value="0">Sideways</option>
-</select>
-
-<select id="momentumSelect">
-<option value="">Momentum</option>
-<option value="2">Strong upward momentum</option>
-<option value="1">Weak upward momentum</option>
-<option value="-1">Weak downward momentum</option>
-<option value="-2">Strong downward momentum</option>
-<option value="0">No clear momentum</option>
-</select>
-
-<select id="levelSelect">
-<option value="">Price relative to recent level</option>
-<option value="2">Near support and bouncing upward</option>
-<option value="-2">Near resistance and rejecting downward</option>
-<option value="0">In middle of range</option>
-<option value="0">Not clear</option>
-</select>
-
-<select id="wickSelect">
-<option value="">Latest candle wick</option>
-<option value="1">Long lower wick</option>
-<option value="-1">Long upper wick</option>
-<option value="0">Short/normal wick</option>
-<option value="0">Not clear</option>
-</select>
-
-<button onclick="analyze()">ANALYZE CHART SETUP</button>
-
-</div>
-
-<div class="card">
-
-<label>ANALYSIS</label>
-
-<div id="analysis" class="analysis">
-Select the five chart observations above and tap
-<strong>ANALYZE CHART SETUP</strong>.
+<div id="message" class="explain">
+Upload your Pocket Option chart screenshot first.
+The image will appear above ready for analysis.
 </div>
 
 </div>
 
 <div class="card">
 
-<label>SIGNAL HISTORY</label>
+<label>ANALYSIS HISTORY</label>
 
-<div id="history">
-<div style="color:#718096;font-size:12px">
+<div id="history" class="history">
 No analysis yet.
-</div>
 </div>
 
 </div>
 
 <div class="notice">
-VICKKI SIGNAL PRO is an educational chart-analysis interface.
-It does not automatically read Pocket Option charts, does not guarantee
-future price movement, and is not financial advice.
+Educational chart-analysis interface only.
+This browser-only version does not connect to live Pocket Option
+market data or an AI vision model and cannot guarantee future price movement.
 </div>
 
 </div>
 
 <script>
 
+let selectedImage=false;
 let history=[];
 
-function analyze(){
+function showPreview(event){
 
-let candle=document.getElementById("candle").value;
-let trend=document.getElementById("trendSelect").value;
-let momentum=document.getElementById("momentumSelect").value;
-let level=document.getElementById("levelSelect").value;
-let wick=document.getElementById("wickSelect").value;
+const file=event.target.files[0];
 
-if(
-candle==="" ||
-trend==="" ||
-momentum==="" ||
-level==="" ||
-wick===""
-){
-alert("Please answer all 5 chart-analysis questions.");
+if(!file)return;
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image file.");
 return;
+
 }
 
-let score=
-Number(candle)+
-Number(trend)+
-Number(momentum)+
-Number(level)+
-Number(wick);
+selectedImage=true;
 
-let signal="WAIT";
-let strength="LOW";
+const reader=new FileReader();
 
-if(score>=5){
-signal="BUY";
-strength="STRONG";
-}
-else if(score>=2){
-signal="BUY";
-strength="MODERATE";
-}
-else if(score<=-5){
-signal="SELL";
-strength="STRONG";
-}
-else if(score<=-2){
-signal="SELL";
-strength="MODERATE";
+reader.onload=function(e){
+
+document.getElementById("previewImage").src=e.target.result;
+
+document.getElementById("preview").style.display="block";
+
+document.getElementById("status").textContent="IMAGE READY";
+
+document.getElementById("message").innerHTML=
+"Screenshot loaded successfully. Tap <strong>ANALYZE SCREENSHOT</strong> to continue.";
+
+};
+
+reader.readAsDataURL(file);
+
 }
 
-let confidence=Math.round(((score+10)/20)*100);
+function analyzeScreenshot(){
 
-let signalBox=document.getElementById("signal");
+if(!selectedImage){
 
-signalBox.textContent=signal;
-signalBox.className="signal-value "+
-(signal==="BUY"?"buy":signal==="SELL"?"sell":"wait");
+alert("Please upload a Pocket Option chart screenshot first.");
 
-document.getElementById("score").textContent=
-"Score: "+score+" / 10";
+return;
 
-document.getElementById("meter").style.width=
-confidence+"%";
-
-document.getElementById("trend").textContent=
-trend>0?"Bullish":trend<0?"Bearish":"Neutral";
-
-document.getElementById("momentum").textContent=
-momentum>0?"Bullish":momentum<0?"Bearish":"Neutral";
-
-document.getElementById("support").textContent=
-level==="2"?"Detected":"Not confirmed";
-
-document.getElementById("resistance").textContent=
-level==="-2"?"Detected":"Not confirmed";
-
-let explanation="";
-
-if(signal==="BUY"){
-explanation=
-"Your selected observations show a bullish setup. "+
-"Trend, momentum and candle behaviour are contributing "+
-"positive points to the analysis.";
-}
-else if(signal==="SELL"){
-explanation=
-"Your selected observations show a bearish setup. "+
-"Trend, momentum and candle behaviour are contributing "+
-"negative points to the analysis.";
-}
-else{
-explanation=
-"The selected observations are mixed or not strong enough "+
-"to produce a directional setup. WAIT is the safer analysis state.";
 }
 
-document.getElementById("analysis").innerHTML=
-"<strong>"+signal+" SETUP</strong><br><br>"+
-explanation+
-"<br><br><strong>Strength:</strong> "+strength+
-"<br><strong>Pair:</strong> "+
-document.getElementById("pair").value+
-"<br><strong>Duration:</strong> "+
+/*
+This version intentionally does not fake AI analysis.
+The browser can receive and display the screenshot,
+but a real vision model requires an AI backend/API.
+*/
+
+document.getElementById("signal").textContent="READY";
+
+document.getElementById("signal").className=
+"signal-result wait";
+
+document.getElementById("confidence").textContent=
+"Screenshot received — AI connection required for chart reading.";
+
+document.getElementById("fill").style.width="0%";
+
+document.getElementById("resultPair").textContent=
+document.getElementById("pair").value;
+
+document.getElementById("resultDuration").textContent=
 document.getElementById("duration").value;
 
-startCountdown();
+document.getElementById("status").textContent=
+"READY FOR AI";
 
-addHistory(signal,score);
+document.getElementById("message").innerHTML=
+"The screenshot has been successfully loaded. "+
+"<strong>Real automatic chart interpretation is the next backend upgrade.</strong> "+
+"This version does not invent a BUY or SELL signal from the image.";
 
-}
-
-function startCountdown(){
-
-let seconds=
-document.getElementById("duration").value==="15 Seconds"
-?15:30;
-
-let timer=setInterval(()=>{
-
-document.getElementById("countdown").textContent=
-"Analysis timer: "+seconds+"s";
-
-seconds--;
-
-if(seconds<0){
-
-clearInterval(timer);
-
-document.getElementById("countdown").textContent=
-"Analysis complete";
+addHistory();
 
 }
 
-},1000);
+function addHistory(){
 
-}
-
-function addHistory(signal,score){
-
-let pair=document.getElementById("pair").value;
-let duration=document.getElementById("duration").value;
-
-let time=new Date().toLocaleTimeString([],{
-hour:"2-digit",
-minute:"2-digit"
-});
+let time=new Date().toLocaleTimeString();
 
 history.unshift({
-time,
-pair,
-duration,
-signal,
-score
+
+pair:document.getElementById("pair").value,
+
+duration:document.getElementById("duration").value,
+
+time:time
+
 });
 
-if(history.length>6){
+if(history.length>5){
+
 history.pop();
+
 }
 
 document.getElementById("history").innerHTML=
-history.map(item=>{
+history.map(x=>`
 
-let cls=
-item.signal==="BUY"
-?"history-buy"
-:item.signal==="SELL"
-?"history-sell"
-:"history-wait";
-
-return `
 <div class="history-item">
-<div>
-<strong>${item.pair}</strong><br>
-<span style="color:#718096">
-${item.time} · ${item.duration}
-</span>
-</div>
-<div class="${cls}">
-${item.signal}<br>
-<span style="font-size:10px">
-${item.score}/10
-</span>
-</div>
-</div>
-`;
 
-}).join("");
+<div>
+<strong>${x.pair}</strong><br>
+<span style="color:#718096">
+${x.time} • ${x.duration}
+</span>
+</div>
+
+<div style="color:#ffc107">
+SCREENSHOT
+</div>
+
+</div>
+
+`).join("");
 
 }
 
