@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vickki Signal PRO</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: white;
+  min-height: 100vh;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #111936;
+  border-bottom: 1px solid #27345f;
+}
+
+.header h1 {
+  font-size: 25px;
+}
+
+.header p {
+  color: #9da9d0;
+  margin-top: 6px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: #111936;
+  border: 1px solid #27345f;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #b9c4e8;
+  font-size: 14px;
+}
+
+select,
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+select {
+  background: #080d1c;
+  color: white;
+  border: 1px solid #33416e;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #4f7cff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.signal {
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.signal-title {
+  color: #9da9d0;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.signal-result {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.buy {
+  color: #35d07f;
+}
+
+.sell {
+  color: #ff5d6c;
+}
+
+.wait {
+  color: #ffc857;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.info-box {
+  background: #080d1c;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+
+.info-box small {
+  display: block;
+  color: #8e9ac0;
+  margin-bottom: 5px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8995b8;
+  text-align: center;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>Vickki Signal PRO</h1>
+  <p>Trading Signal Assistant</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <label for="asset">Select Asset</label>
+
+    <select id="asset">
+      <option>EUR/USD</option>
+      <option>GBP/USD</option>
+      <option>USD/JPY</option>
+      <option>USD/CAD</option>
+      <option>AUD/USD</option>
+      <option>EUR/GBP</option>
+      <option>BTC/USD</option>
+    </select>
+
+    <label for="timeframe">Select Timeframe</label>
+
+    <select id="timeframe">
+      <option>1 Minute</option>
+      <option>5 Minutes</option>
+      <option>15 Minutes</option>
+      <option>30 Minutes</option>
+      <option>1 Hour</option>
+    </select>
+
+    <button onclick="generateSignal()">GENERATE SIGNAL</button>
+
+  </div>
+
+  <div class="card signal">
+
+    <div class="signal-title">CURRENT SIGNAL</div>
+
+    <div id="signal" class="signal-result wait">
+      WAIT
+    </div>
+
+    <p id="message">
+      Select an asset and timeframe, then generate a signal.
+    </p>
+
+    <div class="info">
+
+      <div class="info-box">
+        <small>Asset</small>
+        <span id="selectedAsset">---</span>
+      </div>
+
+      <div class="info-box">
+        <small>Timeframe</small>
+        <span id="selectedTimeframe">---</span>
+      </div>
+
+      <div class="info-box">
+        <small>Confidence</small>
+        <span id="confidence">---</span>
+      </div>
+
+      <div class="info-box">
+        <small>Status</small>
+        <span id="status">Ready</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h3>How it works</h3>
+    <br>
+    <p>
+      Choose an asset and timeframe, then generate a signal.
+      The result is a simulated educational signal and does not
+      guarantee a profitable trade.
+    </p>
+
+    <div class="disclaimer">
+      ⚠️ Educational tool only. Trading involves substantial risk.
+      Never risk money you cannot afford to lose.
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+function generateSignal() {
+
+  const asset = document.getElementById("asset").value;
+  const timeframe = document.getElementById("timeframe").value;
+
+  const signal = document.getElementById("signal");
+  const message = document.getElementById("message");
+
+  const selectedAsset =
+    document.getElementById("selectedAsset");
+
+  const selectedTimeframe =
+    document.getElementById("selectedTimeframe");
+
+  const confidence =
+    document.getElementById("confidence");
+
+  const status =
+    document.getElementById("status");
+
+  selectedAsset.textContent = asset;
+  selectedTimeframe.textContent = timeframe;
+
+  const random = Math.random();
+
+  signal.className = "signal-result";
+
+  if (random < 0.33) {
+
+    signal.textContent = "BUY";
+    signal.classList.add("buy");
+
+    message.textContent =
+      "Potential upward movement detected. Confirm with your own analysis.";
+
+  } else if (random < 0.66) {
+
+    signal.textContent = "SELL";
+    signal.classList.add("sell");
+
+    message.textContent =
+      "Potential downward movement detected. Confirm with your own analysis.";
+
+  } else {
+
+    signal.textContent = "WAIT";
+    signal.classList.add("wait");
+
+    message.textContent =
+      "No clear direction. Waiting for stronger confirmation.";
+
+  }
+
+  const confidenceValue =
+    Math.floor(Math.random() * 21) + 70;
+
+  confidence.textContent =
+    confidenceValue + "%";
+
+  status.textContent = "Signal Generated";
+}
+
+</script>
+
+</body>
+</html>
